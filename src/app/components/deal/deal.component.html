@@ -1,0 +1,16 @@
+<div>
+    <div class="">
+      {{deal.status}}
+      <h4 class=""><strong>{{deal.company}}</strong></h4>
+    </div>
+    <div class=" w-100  ">
+      <div class="d-flex flex-row mb-1 w-100 ">
+        <span class="badge text-bg-secondary me-1 w-100">{{deal.state}}</span>
+        <span class="badge text-bg-primary w-100">{{deal.probability_status}}</span>
+      </div>
+      <div class="d-flex flex-column w-100 ">
+      <i class="bi bi-telephone-fill fst-normal mb-1 text-secondary w-100"> {{deal.first_name}} {{deal.last_name }}  {{ deal.phone |slice:0:9}}</i>
+        <i class="bi bi-calendar fst-normal text-secondary w-100"> {{deal.date | date: 'dd.MM.yyyy'}}</i>
+      </div>
+    </div>
+  </div>

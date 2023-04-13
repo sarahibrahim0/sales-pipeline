@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary col-12  ">
+  <div class="container-fluid  ">
+    <a class="navbar-brand" href="#">Deals</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pt-3 " id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 ms-auto mb-lg-0 col-lg-4 col-sm-12 ">
+
+          <input [(ngModel)]="enteredSearchValue" class="form-control" (input)="onSearch()" type="search"
+          placeholder="Search" aria-label="Search">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h2 class="" *ngIf="enteredSearchValue">search result</h2>
+
+<div  *ngIf="enteredSearchValue" class="d-lg-flex flex-row justify-content-center" >
+
+  <div *ngFor="let deal of deals">
+    <div *ngIf="enteredSearchValue === '' ||  deal?.first_name.toLowerCase().includes(enteredSearchValue)
+    ||  deal?.first_name.toUpperCase().includes(enteredSearchValue) ||  deal?.last_name.toLowerCase().includes(enteredSearchValue)
+    ||  deal?.last_name.toUpperCase().includes(enteredSearchValue)  ||  deal?.phone.includes(enteredSearchValue)">
+      <div cdkDropListGroup class="">
+        <div class="example-container ">
+          <h3>{{deal.status}} </h3>
+          <div cdkDropList [cdkDropListData]="deals" class="example-list">
+            <div class="example-box w-100" ><app-deal [deal]="deal"></app-deal></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div cdkDropListGroup *ngIf="!enteredSearchValue"  class="d-lg-flex flex-row justify-content-center">
+  <div class="example-container ">
+    <h3>focus</h3>
+
+    <div cdkDropList [cdkDropListData]="focus" class="example-list " cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event, 'Focus')">
+      <div class="example-box" *ngFor="let item of focus" cdkDrag><app-deal [deal]="item"></app-deal></div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h3>potential value</h3>
+
+    <div cdkDropList [cdkDropListData]="potentialValue" class="example-list" cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event, 'Potential Value')">
+      <div class="example-box" *ngFor="let item of potentialValue" cdkDrag><app-deal [deal]="item"></app-deal></div>
+    </div>
+  </div>
+
+  <div class="example-container ">
+    <h3>contact made</h3>
+
+    <div cdkDropList [cdkDropListData]="contactMade" class="example-list"
+      (cdkDropListDropped)="drop($event, 'Contact Made')">
+      <div class="example-box" *ngFor="let item of contactMade" cdkDrag><app-deal [deal]="item"></app-deal></div>
+    </div>
+  </div>
+
+  <div class="example-container ">
+    <h3>offer sent</h3>
+
+    <div cdkDropList [cdkDropListData]="offerSent" class="example-list"
+      (cdkDropListDropped)="drop($event, 'Offer Sent')">
+      <div class="example-box" *ngFor="let item of offerSent" cdkDrag><app-deal [deal]="item"></app-deal></div>
+    </div>
+  </div>
+
+  <div class="example-container ">
+    <h3>getting ready</h3>
+
+    <div cdkDropList [cdkDropListData]="gettingReady" class="example-list"
+      (cdkDropListDropped)="drop($event, 'Getting Ready')">
+      <div class="example-box" *ngFor="let item of gettingReady" cdkDrag><app-deal [deal]="item"></app-deal></div>
+    </div>
+  </div>
+
+</div>
