@@ -21,8 +21,9 @@
 
   <div *ngFor="let deal of deals">
     <div *ngIf="enteredSearchValue === '' ||  deal?.first_name.toLowerCase().includes(enteredSearchValue)
-    ||  deal?.first_name.toUpperCase().includes(enteredSearchValue) ||  deal?.last_name.toLowerCase().includes(enteredSearchValue)
-    ||  deal?.last_name.toUpperCase().includes(enteredSearchValue)  ||  deal?.phone.includes(enteredSearchValue)">
+    ||  deal?.first_name.toUpperCase().includes(enteredSearchValue)
+    || deal?.first_name.includes(enteredSearchValue)  ||  deal?.last_name.toLowerCase().includes(enteredSearchValue)
+    ||  deal?.last_name.toUpperCase().includes(enteredSearchValue) || deal?.last_name.includes(enteredSearchValue)  ||  deal?.phone.includes(enteredSearchValue)">
       <div cdkDropListGroup class="">
         <div class="example-container ">
           <h3>{{deal.status}} </h3>
